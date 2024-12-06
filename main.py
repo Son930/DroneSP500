@@ -41,47 +41,6 @@ def send_drone_commands(drone, sender):
 
 
 
-def predefined_test(sock):
-    pt = -2
-    rt = 3
-    messages = \
-        [ControlMessage()] * 200 \
-        + [ControlMessage(calibrate=True)] * 50 \
-        + [ControlMessage()] * 100 \
-        + [ControlMessage(takeoff=True)] * 50 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 200 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, roll=-0.5)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 25 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, roll=0.3)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 100 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, roll=0.5)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 25 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, roll=-0.3)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 100 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, pitch=-0.5)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 25 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, pitch=0.3)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 100 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, pitch=0.5)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 25 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, pitch=-0.3)] * 20 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 100 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, climb=0.7)] * 15 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 200 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, climb=-1)] * 15 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 200 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, yaw=1)] * 100 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 200 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt, land=True)] * 50 \
-        + [ControlMessage(pitchTrim=pt, rollTrim=rt)] * 500
-
-    for m in messages:
-        sock.sendto(m.to_protocol(), ("172.16.10.1", 8080))
-        time.sleep(.02)
-
-
-
-
 
     
 if __name__ == "__main__":
